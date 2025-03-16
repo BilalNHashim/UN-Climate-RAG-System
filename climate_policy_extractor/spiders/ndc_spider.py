@@ -58,8 +58,8 @@ class NDCSpider(scrapy.Spider):
         rows = response.xpath('//table[contains(@class, "table-hover")]//tr')
 
         # TODO: Remove max number of files to process all of them!
-        MAX_FILES = 5
-        for row in tqdm(rows[1:MAX_FILES], desc="Processing rows"):  # Skip table header
+        #MAX_FILES = 5
+        for row in tqdm(rows[1:], desc="Processing rows"):  # Skip table header
             # Extract data from columns
             cols = row.xpath('./td')
             country = cols[0].xpath('normalize-space(.)').get()
