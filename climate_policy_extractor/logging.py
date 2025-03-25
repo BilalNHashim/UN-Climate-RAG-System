@@ -7,6 +7,20 @@ to enhance logging output with colors and consistent formatting.
 import logging
 import sys
 
+def get_logger(name):
+    """Get a logger with the given name.
+    
+    Args:
+        name: The name of the logger
+        
+    Returns:
+        logging.Logger: A configured logger instance
+    """
+    logger = logging.getLogger(name)
+    if not logger.handlers:  # Only add handler if logger doesn't have one
+        setup_colored_logging(logger)
+    return logger
+
 class ColorFormatter(logging.Formatter):
     """Custom formatter to add colors to log messages.
     
@@ -64,3 +78,12 @@ def setup_colored_logging(logger):
     # Add our handler to the logger
     logger.addHandler(console_handler)
     logger.propagate = False  # Prevent propagation to avoid duplicate logs 
+
+def get_logger(name):
+    """
+    Get a logger with colored formatting.
+    Use this instead of logging.getLogger() throughout the project.
+    """
+    logger = logging.getLogger(name)
+    setup_colored_logging(logger)
+    return logger 

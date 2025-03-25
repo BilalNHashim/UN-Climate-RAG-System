@@ -3,12 +3,10 @@ Utility functions for the climate policy extractor.
 """
 import os
 import logging
-
 from unstructured.partition.pdf import partition_pdf
 
 # Set up logger
 logger = logging.getLogger(__name__)
-
 
 def get_file_size(file_path: str) -> int:
     """
@@ -105,10 +103,10 @@ def chunk_document(elements: list, chunk_size: int = 1000, overlap: int = 200) -
     Returns:
         List of chunks with their metadata (page number, etc.)
     """
-    logger.warning("Using starter code. Either edit this function or remove this warning if you are happy with the current implementation.")
+    #logger.warning("Using starter code. Either edit this function or remove this warning if you are happy with the current implementation.")
     
     # Example of a very simple chunking approach:
-    chunks = [{"line_number": i + 1, "text": element["text"]} for i, element in enumerate(elements)]
+    chunks = [{"line_number": i + 1, "text": element["text"], "type": element["type"], "metadata": element["metadata"]} for i, element in enumerate(elements)]
     
     logger.info(f"Created {len(chunks)} chunks (placeholder implementation)")
     return chunks

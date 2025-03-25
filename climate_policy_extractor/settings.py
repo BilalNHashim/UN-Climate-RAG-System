@@ -14,10 +14,11 @@ NEWSPIDER_MODULE = "climate_policy_extractor.spiders"
 
 ITEM_PIPELINES = {
     'climate_policy_extractor.pipelines.DocumentDownloadPipeline': 100,
+    'climate_policy_extractor.pipelines.PostgreSQLPipeline': 200
+}
     # TODO: You can choose to add another pipeline here to do the 
     #       text extraction and chunking whenever you run the crawler
     # 'climate_policy_extractor.pipelines.PDFTextExtractionPipeline': 200
-}
 
 AUTOTHROTTLE_ENABLED = True
 AUTOTHROTTLE_START_DELAY = 3
