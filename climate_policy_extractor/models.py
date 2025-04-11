@@ -22,7 +22,7 @@ class NDCDocumentModel(Base):
     doc_id = Column(String, primary_key=True)
 
     # Metadata fields
-    scraped_at = Column(DateTime, nullable=True)
+    scraped_at = Column(DateTime, default=now_london_time)
     downloaded_at = Column(DateTime, nullable=True)
     processed_at = Column(DateTime, nullable=True)
     
@@ -39,13 +39,15 @@ class NDCDocumentModel(Base):
     file_path = Column(String)
     file_size = Column(Float)
     extracted_text = Column(Text, nullable=True)
+    chunks = Column(JSONB, nullable=True)
 
     created_at = Column(DateTime(timezone=True), default=now_london_time)
     updated_at = Column(DateTime(timezone=True), 
-                    default=now_london_time,
-                    onupdate=now_london_time)
-
+                        default=now_london_time,
+                        onupdate=now_london_time)
+    
     # Relationship to chunks (will be populated by standalone processing)
+    doc_chunks = relationship("DocChunk", back_populates="document")
                         
     def __repr__(self):
         obj = (
@@ -75,13 +77,13 @@ class DocChunk(Base):
     chunk_metadata = Column(JSONB, nullable=True)  # For flexible metadata storage
     
     # Timestamps
-    #created_at = Column(DateTime(timezone=True), default=now_london_time)
-    #updated_at = Column(DateTime(timezone=True), 
-                       #default=now_london_time,
-                       #onupdate=now_london_time)
+    created_at = Column(DateTime(timezone=True), default=now_london_time)
+    updated_at = Column(DateTime(timezone=True), 
+                       default=now_london_time,
+                       onupdate=now_london_time)
     
     # Relationship back to document
-    #document = relationship("NDCDocumentModel", back_populates="doc_chunks")
+    document = relationship("NDCDocumentModel", back_populates="doc_chunks")
 
     def __repr__(self):
         return f"DocChunk(id={self.id}, doc_id={self.doc_id}, chunk_index={self.chunk_index})"

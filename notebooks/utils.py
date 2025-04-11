@@ -110,3 +110,45 @@ def chunk_document(elements: list, chunk_size: int = 1000, overlap: int = 200) -
     
     logger.info(f"Created {len(chunks)} chunks (placeholder implementation)")
     return chunks
+
+def improved_chunker(elements: list, chunk_size: int = 1000, overlap: int = 200) -> list:
+    """
+    Combine extracted text elements into rolling window chunks (no metadata).
+    
+    Args:
+        elements (list): List of elements extracted from a document (each with a 'text' key)
+        chunk_size (int): Max characters per chunk
+        overlap (int): Characters to overlap between chunks
+
+    Returns:
+        List[dict]: Each dict contains { "content": str, "chunk_index": int }
+    """
+    chunks = []
+    current_chunk = ""
+
+    for i, element in enumerate(elements):
+        text = element.get("text", "").strip()
+        if not text:
+            continue  # Skip empty lines or malformed elements
+        
+        if len(current_chunk) + len(text) + 1 <= chunk_size:
+            current_chunk += text + " "
+        else:
+            # Finalize and store the current chunk
+            chunks.append({
+                "content": current_chunk.strip(),
+                "chunk_index": len(chunks)
+            })
+
+            # Start a new chunk using overlap from the end of the previous one
+            current_chunk = current_chunk[-overlap:] + text + " "
+
+    # Add final chunk if any text remains
+    if current_chunk.strip():
+        chunks.append({
+            "content": current_chunk.strip(),
+            "chunk_index": len(chunks)
+        })
+
+    logger.info(f"Chunked document into {len(chunks)} chunks.")
+    return chunks

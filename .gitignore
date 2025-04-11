@@ -174,3 +174,20 @@ cython_debug/
 
 .DS_Store
 data/
+
+#Ignore pickle files
+*.pkl
+
+#Ignore models
+notebooks/local_models/
+
+#Ignore figures (irrelvant data)
+figures/
+local_models/
+
+#Ignore logger.md 
+logger.md
+
+#Ignore pycache
+__pycache__/
+
