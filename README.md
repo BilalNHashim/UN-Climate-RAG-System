@@ -1,7 +1,7 @@
 A tool for extracting climate policy information from National Determined Contributions (NDC) documents.
 ## Overview
 
-This project provides a framework for analyzing climate policy information from NDC documents submitted to the UNFCCC. It is designed as part of the DS205 course at the London School of Economics and Political Science.
+This project provides a framework for analyzing climate policy information from NDC documents submitted to the UNFCCC.
 
 The Climate Policy Extractor helps you:
 
