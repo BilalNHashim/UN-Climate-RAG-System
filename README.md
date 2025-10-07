@@ -1,8 +1,4 @@
 A tool for extracting climate policy information from National Determined Contributions (NDC) documents.
-
-<span style="color:grey;font-size:0.9em;display:block;">(Part of [DS205 - Advanced Data Manipulation](https://lse-dsi.github.io/DS205))</span>
-
-
 ## Overview
 
 This project provides a framework for analyzing climate policy information from NDC documents submitted to the UNFCCC. It is designed as part of the DS205 course at the London School of Economics and Political Science.
