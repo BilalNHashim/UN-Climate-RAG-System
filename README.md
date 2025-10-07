@@ -1,10 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/TIm46Wr2)
-# Climate Policy Extractor (DS205 - Problem Set 2)
-
-<figure>
-    <img src="./figures/DS205_2024_25_icon_200px.png" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 1em;margin:1em 0em;">
-</figure>
-
 A tool for extracting climate policy information from National Determined Contributions (NDC) documents.
 
 <span style="color:grey;font-size:0.9em;display:block;">(Part of [DS205 - Advanced Data Manipulation](https://lse-dsi.github.io/DS205))</span>
@@ -63,7 +56,3 @@ The project follows this general workflow:
 6. **Evaluation**: Assess the accuracy and effectiveness of the extraction system
 
 The included notebooks guide you through each step of this process.
-
-## License
-
-This current project is to be kept private and intended for educational purposes only. In the Spring Term 2024/25, we will evaluate contributions and select the best ones to create a public repository. All other participants will have the opportunity to contribute through pull requests (PRs) based on the feedback received on the individual submissions, which may also earn you additional marks.
